@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+header {
+  background-color: #222;
+  color: white;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.pilar {
+  padding: 40px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.pilar h2 {
+  margin-top: 0;
+}
+
+.pilar img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px 0;
+}
+
+.consejo {
+  background-color: #e0e0e0;
+  padding: 30px 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #222;
+  color: white;
+}
+
+.barra-busqueda {
+    width: 95%;
+    margin: 10px auto;
+    padding: 12px 15px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: none;
+    background-color: #f2f2f2;
+    display: block;
+}
+
+.busqueda-contenedor {
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.sugerencias-lista {
+    position: absolute;
+    top: 48px;
+    width: 100%;
+    background: #ffffff;     /* ← CUADRO BLANCO */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: none;
+    z-index: 99;
+}
+
+.sugerencias-lista div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    background: #ffffff;     /* ← FONDO DE CADA OPCIÓN BLANCO */
+    color: #000000;          /* ← TEXTO NEGRO */
+}
+
+.sugerencias-lista div:hover {
+    background: #f0f0f0;     /* ← Hover gris suave */
+}
+
+.tabla-rutina {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.tabla-rutina th, .tabla-rutina td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.tabla-rutina th {
+    background: #fff;
+    font-weight: bold;
+}
+
+.espacio-imagen {
+    width: 100%;
+    height: 150px; /* puedes cambiarlo */
+    background: transparent;
+}
