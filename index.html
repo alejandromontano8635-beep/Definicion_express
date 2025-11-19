@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Ectomorfo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Guía Ectomorfo</h1>
+    <nav>
+      <ul>
+
+<div class="busqueda-contenedor">
+    <input 
+        type="text" 
+        id="barraBusqueda" 
+        class="barra-busqueda" 
+        placeholder="Buscar rutina..."
+        oninput="mostrarSugerencias()"
+        onkeypress="buscarEnter(event)"
+    >
+
+    <div id="sugerencias" class="sugerencias-lista"></div>
+</div>
+
+<script>
+const listaSugerencias = [
+    "Pectoral",
+    "guía semanal"
+
+];
+
+function mostrarSugerencias() {
+    const input = document.getElementById("barraBusqueda").value.toLowerCase();
+    const sugerenciasDiv = document.getElementById("sugerencias");
+
+    sugerenciasDiv.innerHTML = "";
+
+    if (input === "") {
+        sugerenciasDiv.style.display = "none";
+        return;
+    }
+
+    const filtradas = listaSugerencias.filter(item =>
+        item.toLowerCase().includes(input)
+    );
+
+    if (filtradas.length === 0) {
+        sugerenciasDiv.style.display = "none";
+        return;
+    }
+
+    filtradas.forEach(item => {
+        const div = document.createElement("div");
+        div.textContent = item;
+
+        div.onclick = () => {
+            document.getElementById("barraBusqueda").value = item;
+            sugerenciasDiv.style.display = "none";
+        };
+
+        sugerenciasDiv.appendChild(div);
+    });
+
+    sugerenciasDiv.style.display = "block";
+}
+
+function buscarEnter(event) {
+    if (event.key === "Enter") {
+        const valor = document.getElementById("barraBusqueda").value.toLowerCase();
+
+        if (valor.includes("pec")) {
+            document.getElementById("sec-pectoral").scrollIntoView({ behavior: "smooth" });
+        }
+        else if (valor.includes("guia") || valor.includes("guía semanal")) {
+            document.getElementById("guiaSemanal").scrollIntoView({ behavior: "smooth" });
+        }
+    }
+}
+</script>
+
+<script>
+function buscarEnter(event) {
+    if (event.key === "Enter") {
+        const valor = document.getElementById("barraBusqueda").value.toLowerCase();
+
+        // Redirecciones según palabras clave
+        if (valor.includes("pectoral") || valor.includes("pecho")) {
+            window.location.href = "pectoral.html"; // HTML 2
+        } 
+        else if (valor.includes("guia") || valor.includes("guía semanal")) {
+            window.location.href = "Guiase.html"; // HTML 3
+        } 
+        else {
+            alert("No se encontró esa rutina");
+        }
+    }
+}
+</script>
+
+<section id="pilar1" class="pilar">
+    <h2>Primer Pilar</h2>
+    
+    <!-- SUBTÍTULO AQUI (Ejemplo: Entrenamiento) -->
+    <h3 class="subtitulo">Entrenamiento</h3>
+
+    <p>Para que un ectomorfo gane masa muscular, el entrenamiento debe estar enfocado en estímulos fuertes y controlados, priorizando ejercicios compuestos como sentadillas, peso muerto, press banca, dominadas y press militar. Estos movimientos reclutan grandes grupos musculares y generan la tensión mecánica necesaria para crecer. Las sesiones deben ser relativamente cortas pero intensas, evitando el sobreentrenamiento, con un rango de 6 a 10 repeticiones, 3 a 5 series y una progresión constante en peso o volumen semana a semana. Un ectomorfo no necesita entrenar todos los días; entre 3 y 5 sesiones semanales maximiza el crecimiento mientras minimiza la fatiga acumulada.</p>
+    <img src="Entrenamiento.jpg" alt="Imagen Pilar 1">
+</section>
+
+<section id="pilar2" class="pilar">
+    <h2>Segundo Pilar</h2>
+
+    <!-- SUBTÍTULO AQUI (Ejemplo: Alimentación) -->
+    <h3 class="subtitulo">Alimentación</h3>
+
+    <p>La alimentación es el pilar más determinante para un ectomorfo, ya que su metabolismo suele ser más acelerado y cuesta mantener un superávit calórico estable. Para crecer, debe consumir entre 300 y 500 calorías por encima de su gasto diario, priorizando alimentos densos en energía como arroz, pasta, pan, aguacate, frutos secos, avena y aceite de oliva. La proteína debe mantenerse entre 1.6 y 2.2 gramos por kilo de peso, mientras que los carbohidratos deben ser altos para asegurar energía en entrenamientos y favorecer un entorno anabólico. Comer varias veces al día o incluir batidos calóricos puede ser clave para mantener un superávit real y constante.</p>
+    <img src="Alimentacion.jpg" alt="Imagen Pilar 2">
+</section>
+
+<section id="pilar3" class="pilar">
+    <h2>Tercer Pilar</h2>
+
+    <!-- SUBTÍTULO AQUI (Ejemplo: Descanso) -->
+    <h3 class="subtitulo">Descanso</h3>
+
+    <p>El descanso es donde realmente ocurre la recuperación y la construcción de músculo, algo especialmente crítico para un ectomorfo. Dormir entre 7.5 y 9 horas permite la correcta liberación de hormonas como la testosterona y la hormona del crecimiento, fundamentales para reparar fibras musculares. Además, es importante dejar días de descanso entre entrenamientos intensos, ya que este tipo de cuerpo gasta mucha energía incluso en reposo, lo que hace que la recuperación sea más demandante. Minimizar el estrés, evitar exceso de cardio y asegurar un sueño profundo y consistente son elementos esenciales para que el cuerpo realmente pueda construir masa muscular.</p>
+    <img src="Descanso.jpg" alt="Imagen Pilar 3">
+</sec
+    <section id="consejos" class="consejos">
+    <h2>Consejos</h2>
+
+    <!-- CONSEJO 1 -->
+    <div class="consejo-item">
+        <img src="disi.jpg" alt="Icono Consejo 1" class="icono-consejo">
+        <p>Recuerda siempre ser disiplinado con todos tus ejercicios y entrena como minimo de 5 a 4 dias a la semana.</p>
+    </div>
+
+    <!-- CONSEJO 2 -->
+    <div class="consejo-item">
+        <img src="cal.jpg" alt="Icono Consejo 2" class="icono-consejo">
+        <p>Siempre calienta antes de entrenar para evitar algun problema.</p>
+    </div>
+
+    <!-- CONSEJO 3 -->
+    <div class="consejo-item">
+        <img src="db.jpg" alt="Icono Consejo 3" class="icono-consejo">
+        <p>Recuerda no veras resultados de la noche a la mañana asi que no te rindas si no bes resultados y recuerda que esti es un proseso.</p>
+    </div>
+</section>
+
+  <footer>
+    <p>© 2025 Guía Ectomorfo Gratuita. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
