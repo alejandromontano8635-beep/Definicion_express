@@ -117,3 +117,243 @@ footer {
     height: 150px; /* puedes cambiarlo */
     background: transparent;
 }
+
+/* Botón 3D */
+.btn-privacidad {
+    background: red;
+    color: blue;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #990000;
+    transition: 0.1s;
+}
+
+.btn-privacidad:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #990000;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background: #fff;
+    color: black;  
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: aparecer 0.3s ease;
+}
+
+/* Animación */
+@keyframes aparecer {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* Botón cerrar */
+.cerrar {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cerrar:hover {
+    color: red;
+}
+
+/* Contenedor general para que el contenido no esté pegado a los bordes */
+.container {
+    padding: 15px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Tablas responsivas */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Texto que se adapta mejor en pantallas pequeñas */
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.5;
+}
+
+/* Botones más grandes para dedo */
+button, a.button {
+    padding: 12px 20px;
+    font-size: 17px;
+}
+
+/* --- Reglas específicas para teléfonos --- */
+@media (max-width: 600px) {
+
+    /* Títulos más pequeños */
+    h1 { font-size: 26px; }
+    h2 { font-size: 22px; }
+    h3 { font-size: 18px; }
+
+    /* Ajusta el tamaño del texto general */
+    p, li { font-size: 16px; }
+
+    /* Tablas más legibles */
+    th, td {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    /* Botones grandes y fáciles de tocar */
+    button, a.button {
+        width: 100%;
+        display: block;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    /* Espaciado general */
+    .container {
+        padding: 10px;
+    }
+}
+
+.detalle-rutina {
+  background: #fff;
+  color: #000;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.detalle-rutina h2 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.ejercicio {
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.ejercicio h3 {
+  margin: 8px 0;
+  color: #222;
+  font-size: 18px;
+}
+
+.ejercicio ul {
+  margin: 6px 0 10px 20px;
+}
+
+.ejercicio p {
+  margin: 6px 0;
+}
+
+.dia-contenido {
+    padding: 15px;
+    margin-top: 20px;
+    background: #ffffff;
+    color: black;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+.dia-contenido h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.ejercicio {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.ejercicio h3 {
+    color: #333;
+}
+
+.ejercicio ul {
+    margin-left: 20px;
+}
+
+.imagen-dia {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.imagen-dia img {
+    width: 250px;       /* tamaño ajustable */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Tamaño estándar para PC */
+.imagen-dia img {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Tamaño para móviles */
+@media (max-width: 600px) {
+    .imagen-dia img {
+        width: 180px;
+    }
+}
+
+/* También reduce imágenes internas si tienes más */
+.detalle-rutina img,
+.ejercicio img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+@media (max-width: 600px) {
+    .detalle-rutina img,
+    .ejercicio img {
+        max-width: 180px;
+    }
+}

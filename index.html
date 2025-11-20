@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <div class="container">
+
   <header>
     <h1>Guía Ectomorfo</h1>
     <nav>
@@ -155,6 +158,70 @@ function buscarEnter(event) {
     <p>© 2025 Guía Ectomorfo Gratuita. Todos los derechos reservados.</p>
   </footer>
 
+  <!-- Botón 3D de Política de Privacidad -->
+<div style="text-align: center; margin-top: 40px;">
+    <button id="privacidadBtn" class="btn-privacidad">Política de Privacidad</button>
+</div>
+
+<!-- Ventana Modal -->
+<div id="modalPrivacidad" class="modal">
+    <div class="modal-content">
+        <span class="cerrar">&times;</span>
+        <h2>Política de Privacidad – Definición Express</h2>
+        <p><strong>Última actualización:</strong> [Coloca la fecha]</p>
+
+        <h3>1. Información que recopilamos</h3>
+        <p>Recopilamos datos no personales como IP anonimizada, navegador, tipo de dispositivo, páginas visitadas, fecha y hora. También podemos usar cookies.</p>
+
+        <h3>2. Cómo utilizamos tu información</h3>
+        <p>Usamos la información para mejorar el sitio, analizar estadísticas y (si se activan anuncios) mostrar publicidad personalizada.</p>
+
+        <h3>3. Google AdSense y cookies</h3>
+        <p>Google AdSense puede usar cookies como DoubleClick para mostrar anuncios basados en intereses. Puedes desactivar los anuncios personalizados en la página de configuración de Google Ads.</p>
+
+        <h3>4. Enlaces a sitios externos</h3>
+        <p>No somos responsables de contenido o prácticas de privacidad de sitios externos.</p>
+
+        <h3>5. Protección de la información</h3>
+        <p>Protegemos tus datos con medidas razonables, aunque ningún sistema es 100% seguro.</p>
+
+        <h3>6. Privacidad de menores</h3>
+        <p>No recopilamos información de menores de 13 años deliberadamente. Si un padre desea eliminar datos, puede contactarnos.</p>
+
+        <h3>7. Derechos del usuario</h3>
+        <p>Dependiendo de tu país, puedes solicitar acceso, modificación o eliminación de datos.</p>
+
+        <h3>8. Cambios a esta política</h3>
+        <p>Podemos actualizar esta política; la fecha de actualización estará siempre aquí arriba.</p>
+
+        <h3>9. Contacto</h3>
+        <p>Si tienes dudas, escribe a: <strong>[alejandromontano8635@gmail.com]</strong></p>
+    </div>
+</div>
+
   <script src="script.js"></script>
+
+  <script>
+    var modal = document.getElementById("modalPrivacidad");
+    var btn = document.getElementById("privacidadBtn");
+    var cerrar = document.getElementsByClassName("cerrar")[0];
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    cerrar.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</div>
+
 </body>
 </html>
