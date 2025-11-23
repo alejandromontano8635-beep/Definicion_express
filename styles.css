@@ -380,3 +380,9 @@ button, a.button {
 .btn-ectopago:active {
     transform: scale(0.95);
 }
+.btn-ectopago {
+    background: #ff4d4d !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
