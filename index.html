@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Restaurante Metate — Auténtica Cocina Mexicana</title>
+  <meta name="description" content="Restaurante Metate — Recetas tradicionales mexicanas, ingredientes frescos y un ambiente acogedor. Reserva mesa y descubre nuestro menú." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#D92027; /* rojo tradicional */
+      --accent-2:#31B44C; /* verde secundario */
+      --warm:#FFDA63; /* amarillo para llamados */
+      --bg:#fbfbfb;
+      --card:#ffffff;
+      --muted:#6b6b6b;
+      --radius:14px;
+      --glass: rgba(255,255,255,0.6);
+      --max-width:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Montserrat, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,#fff 0%, #fbf7f3 100%);
+      color:#1a1a1a; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; line-height:1.45;
+    }
+
+    /* Layout */
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
+
+    header.site-header{
+      background: linear-gradient(90deg,var(--accent) 0%, rgba(217,32,39,0.9) 70%);
+      color:#fff;padding:20px 0;border-bottom-left-radius:24px;border-bottom-right-radius:24px;box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .header-inner{display:flex;align-items:center;gap:18px;justify-content:space-between;max-width:var(--max-width);margin:0 auto;padding:0 20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:62px;height:62px;border-radius:12px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+    .brand h1{font-family:'Playfair Display',serif;font-size:1.4rem;margin:0}
+    .brand p{font-size:0.85rem;margin:0;opacity:.95}
+
+    /* Sticky nav */
+    nav.site-nav{background:transparent;position:sticky;top:12px;z-index:60;padding:12px 20px}
+    .nav-inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .nav-links{display:flex;gap:8px;flex-wrap:wrap}
+    .nav-links a{background:var(--accent-2);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:600;font-size:0.95rem}
+    .nav-links a:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(49,180,76,0.15)}
+
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-primary{background:var(--warm);color:#000}
+    .btn-outline{background:transparent;border:2px solid rgba(255,255,255,0.12);color:#fff}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 440px;gap:28px;align-items:center;padding:56px 20px}
+    .hero-card{background:var(--card);padding:28px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,0.06)}
+    .hero h2{font-family:'Playfair Display', serif;font-size:2.2rem;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 16px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+    .hero-media{border-radius:18px;height:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* Menu grid */
+    .menu-section{padding:48px 20px}
+    .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    @media(min-width:900px){.menu-grid{grid-template-columns:repeat(3,1fr)}}
+
+    .card{background:var(--card);border-radius:14px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:flex-start}
+    .card img{width:110px;height:90px;border-radius:10px;object-fit:cover;flex-shrink:0}
+    .card h3{margin:0;font-size:1.05rem}
+    .price{color:var(--accent);font-weight:800}
+    .tag{display:inline-block;background:rgba(0,0,0,0.05);padding:6px 8px;border-radius:8px;font-size:0.75rem;margin-top:8px}
+
+    /* Filters */
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .chip{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #eee;cursor:pointer;font-weight:700}
+    .chip.active{background:var(--accent);color:#fff;border-color:transparent}
+
+    /* About */
+    .about{display:flex;gap:20px;align-items:center;padding:40px 20px;background:linear-gradient(180deg,#fff,#fffaf2)}
+    .about img{width:260px;height:160px;object-fit:cover;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:28px 20px}
+    @media(max-width:900px){.features{grid-template-columns:repeat(1,1fr)}}
+    .feature{background:var(--card);padding:18px;border-radius:12px;text-align:center}
+
+    /* Contact & form */
+    .contact{padding:40px 20px}
+    .contact-grid{display:grid;grid-template-columns:1fr 380px;gap:18px}
+    @media(max-width:980px){.contact-grid{grid-template-columns:1fr}}
+    form{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    label{display:block;margin-bottom:6px;font-weight:700}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin-bottom:12px}
+    textarea{min-height:120px}
+
+    footer{background:#111;color:#fff;padding:26px 20px;margin-top:28px}
+    .footer-inner{max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+
+    /* Small screens */
+    @media(max-width:800px){
+      .hero{grid-template-columns:1fr; padding:28px 12px}
+      .hero-media{order:-1}
+      .brand h1{font-size:1.2rem}
+      .nav-links{display:none}
+    }
+
+    /* Accessibility focus */
+    a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(217,32,39,0.18);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+        <div>
+          <h1>Restaurante Metate</h1>
+          <p>Auténtica cocina mexicana — desde 2010</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-outline" onclick="toogleTheme()" aria-label="Cambiar tema">🌓 Tema</button>
+        <button class="btn btn-primary" id="reservarBtn">Reservar ahora</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav" role="navigation" aria-label="Navegación principal">
+    <div class="nav-inner">
+      <div class="nav-brand" style="font-weight:800;color:#222">Menú & Reservas</div>
+      <div class="nav-links" role="menubar">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#sobre-nosotros">Sobre Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="inicio">
+    <section class="hero container">
+      <div class="hero-card">
+        <h2>Sabores de México, con corazón y técnica</h2>
+        <p class="muted">Platos tradicionales preparados con ingredientes locales y recetas familiares. Ven a probar los chiles en nogada, tacos al pastor y nuestras salsas caseras.</p>
+
+        <div class="cta-row" style="margin-top:16px">
+          <button class="btn btn-primary" id="heroReserve">Reservar mesa</button>
+          <a class="btn" href="#menu" style="background:transparent;border:0;color:var(--accent);font-weight:800">Ver Menú</a>
+        </div>
+
+        <ul style="margin-top:18px;display:flex;gap:10px;padding:0;list-style:none">
+          <li class="muted">Horario: Lun-Dom 11:00 - 22:00</li>
+          <li class="muted" style="margin-left:8px">Tel: <a href="tel:+525512345678">(55) 1234-5678</a></li>
+        </ul>
+      </div>
+
+      <div class="hero-media">
+        <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+      </div>
+    </section>
+
+    <section id="menu" class="menu-section container" aria-labelledby="menu-title">
+      <h2 id="menu-title">Nuestro Menú Destacado</h2>
+      <p class="muted">Selecciona una categoría para filtrar — todo hecho con ingredientes frescos.</p>
+
+      <div class="filters" role="toolbar" aria-label="Filtrar menú">
+        <button class="chip active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="antojitos">Antojitos</button>
+        <button class="chip" data-filter="bebidas">Bebidas</button>
+        <button class="chip" data-filter="entradas">Entradas</button>
+        <button class="chip" data-filter="especialidades">Especialidades</button>
+        <button class="chip" data-filter="postres">Postres</button>
+        <button class="chip" data-filter="sopas">Sopas</button>
+        <button class="chip" data-filter="tacos">Tacos</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+        <!-- Ejemplos de items; reemplaza src/price/description según necesites -->
+        <article class="card" data-category="especialidades">
+          <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+          <div>
+            <h3>Chiles en Nogada <span class="price">$220</span></h3>
+            <p class="muted">Relleno de picadillo, salsa de nuez y granada — preparación tradicional.</p>
+            <div class="tag">Especialidades</div>
+          </div>
+        </article>
+
+        <article class="card" data-category="tacos">
+          <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+          <div>
+            <h3>Tacos al Pastor <span class="price">$75</span></h3>
+            <p class="muted">Tortilla de maíz, carne marinada, piña y salsa de la casa.</p>
+            <div class="tag">Tacos</div>
+          </div>
+        </article>
+
+        <article class="card" data-category="antojitos">
+          <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+          <div>
+            <h3>Quesadillas Mexicanas <span class="price">$60</span></h3>
+            <p class="muted">Queso fundido, flor de calabaza o huitlacoche (según temporada).</p>
+            <div class="tag">Antojitos</div>
+          </div>
+        </article>
+
+        <article class="card" data-category="bebidas">
+          <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+          <div>
+            <h3>Aguas Frescas <span class="price">$40</span></h3>
+            <p class="muted">Horchata, jamaica y limón — hechas diariamente.</p>
+            <div class="tag">Bebidas</div>
+          </div>
+        </article>
+
+        <article class="card" data-category="postres">
+          <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+          <div>
+            <h3>Flan Casero <span class="price">$55</span></h3>
+            <p class="muted">Textura suave y caramelo dorado.</p>
+            <div class="tag">Postres</div>
+          </div>
+        </article>
+
+        <article class="card" data-category="entradas">
+          <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+          <div>
+            <h3>Sopa de Tortilla <span class="price">$85</span></h3>
+            <p class="muted">Caldo de tomate, tiras de tortilla frita y chile pasilla.</p>
+            <div class="tag">Sopas</div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="sobre-nosotros" class="about container">
+      <img src="imagen.jpg" alt="Imagen del restaurante" class="img-placeholder">
+      <div>
+        <h2>Sobre Nosotros</h2>
+        <p class="muted">En Restaurante Metate honramos las tradiciones culinarias desde 2010. Nuestro nombre proviene del metate — instrumento ancestral para moler maíz — símbolo de autenticidad. Utilizamos ingredientes locales y recetas familiares para crear platillos con historia.</p>
+        <p style="margin-top:12px"><strong>Dirección:</strong> Calle Principal 123, Ciudad de México · <strong>Tel:</strong> <a href="tel:+525512345678">(55) 1234-5678</a></p>
+      </div>
+    </section>
+
+    <section class="features container">
+      <div class="feature">
+        <h3>Chefs Expertos</h3>
+        <p class="muted">Recetas tradicionales transmitidas por generaciones.</p>
+      </div>
+      <div class="feature">
+        <h3>Ingredientes Frescos</h3>
+        <p class="muted">Seleccionados diariamente de productores locales.</p>
+      </div>
+      <div class="feature">
+        <h3>Premios & Reconocimientos</h3>
+        <p class="muted">Reconocidos por nuestra excelencia culinaria y servicio.</p>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact container">
+      <h2>Contacto y Reservas</h2>
+      <div class="contact-grid">
+        <div>
+          <h3 class="muted">Horario</h3>
+          <p>Lunes - Domingo · 11:00 — 22:00</p>
+
+          <h3 class="muted">Contacto</h3>
+          <p>Tel: <a href="tel:+525512345678">(55) 1234-5678</a></p>
+          <p>Email: <a href="mailto:info@metate.com">info@metate.com</a></p>
+
+          <h3 class="muted">Dirección</h3>
+          <p>Calle Principal 123, Ciudad de México</p>
+
+          <div style="margin-top:12px">
+            <iframe title="Mapa Metate" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.0!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzM2LjAiTiA5OcKwMDgnMzIuMCJX!5e0!3m2!1ses-419!2smx!4v1620000000000" width="100%" height="200" style="border:0;border-radius:12px" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <form id="contactForm" aria-label="Formulario de contacto">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre">
+
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" required placeholder="tunombre@ejemplo.com">
+
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" placeholder="(55) 1234-5678">
+
+          <label for="fecha">Fecha de reserva (opcional)</label>
+          <input id="fecha" name="fecha" type="date">
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="¿En qué te podemos ayudar?" aria-label="Mensaje"></textarea>
+
+          <button type="submit" class="btn btn-primary">✉️ Enviar Mensaje</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Restaurante Metate — Todos los derechos reservados</div>
+      <div class="muted">Auténtica cocina mexicana con amor y tradición</div>
+    </div>
+  </footer>
+
+  <!-- Reserva modal simple -->
+  <div id="modal" role="dialog" aria-modal="true" aria-hidden="true" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;pointer-events:none;">
+    <div id="modalBg" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);opacity:0;transition:opacity .22s"></div>
+    <div id="modalCard" style="width:calc(100% - 40px);max-width:560px;background:var(--card);border-radius:12px;padding:18px;transform:translateY(10px) scale(.98);opacity:0;transition:all .22s;box-shadow:0 16px 40px rgba(0,0,0,0.18);pointer-events:auto;">
+      <h3>Reservar mesa</h3>
+      <p class="muted">Selecciona fecha y hora, y te confirmaremos por teléfono o correo.</p>
+      <form id="reserveForm">
+        <label for="r-name">Nombre</label>
+        <input id="r-name" required>
+        <label for="r-phone">Teléfono</label>
+        <input id="r-phone" required>
+        <label for="r-date">Fecha</label>
+        <input id="r-date" type="date" required>
+        <label for="r-time">Hora</label>
+        <input id="r-time" type="time" required>
+        <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end">
+          <button type="button" class="btn" id="cancelModal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Confirmar reserva</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Fecha en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu filter
+    document.querySelectorAll('.chip').forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+        const filter = chip.dataset.filter;
+        document.querySelectorAll('#menuGrid article').forEach(card=>{
+          card.style.display = (filter==='all' || card.dataset.category===filter) ? 'flex' : 'none';
+        });
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // Modal control
+    const modal = document.getElementById('modal');
+    const modalBg = document.getElementById('modalBg');
+    const modalCard = document.getElementById('modalCard');
+    function openModal(){ modal.style.pointerEvents='auto'; modal.setAttribute('aria-hidden','false'); modalBg.style.opacity='1'; modalCard.style.opacity='1'; modalCard.style.transform='translateY(0) scale(1)'; }
+    function closeModal(){ modal.style.pointerEvents='none'; modal.setAttribute('aria-hidden','true'); modalBg.style.opacity='0'; modalCard.style.opacity='0'; modalCard.style.transform='translateY(10px) scale(.98)'; }
+    document.getElementById('reservarBtn').addEventListener('click',openModal);
+    document.getElementById('heroReserve').addEventListener('click',openModal);
+    document.getElementById('cancelModal').addEventListener('click',closeModal);
+    modalBg.addEventListener('click',closeModal);
+
+    // Submit handlers (simulados) — aquí puedes integrar API/Email
+    document.getElementById('contactForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      alert('Gracias, recibimos tu mensaje. Te contactaremos pronto.');
+      e.target.reset();
+    });
+
+    document.getElementById('reserveForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      alert('Reserva enviada. Te confirmaremos por teléfono o correo.');
+      closeModal();
+      e.target.reset();
+    });
+
+    // Tema oscuro simple (persistente en localStorage)
+    function toogleTheme(){
+      const dark = document.documentElement.dataset.theme === 'dark';
+      if(dark){ document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('metate-theme'); }
+      else{ document.documentElement.setAttribute('data-theme','dark'); localStorage.setItem('metate-theme','dark'); }
+    }
+    if(localStorage.getItem('metate-theme')==='dark') document.documentElement.setAttribute('data-theme','dark');
+
+    // Ajustes adicionales de CSS para tema dark
+    const darkStyle = document.createElement('style');
+    darkStyle.textContent = '[data-theme="dark"]{background:#0b0b0b;color:#ddd} [data-theme="dark"] header.site-header{background:linear-gradient(90deg,#7b1116,#5c0b10)} [data-theme="dark"] .card{background:#0f0f10;box-shadow:0 10px 30px rgba(0,0,0,0.6)} [data-theme="dark"] .btn-outline{border-color:rgba(255,255,255,0.08)} [data-theme="dark"] footer{background:#050505}';
+    document.head.appendChild(darkStyle);
+
+  </script>
+</body>
+</html>
